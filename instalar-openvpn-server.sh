@@ -5,9 +5,9 @@
 #https://tecadmin.net/install-openvpn-server-ubuntu/
 
 
-#sudo apt-get update
-#sudo apt-get upgrade
-#sudo apt install openvpn easy-rsa
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install openvpn easy-rsa
 
 
 ruta=`pwd`
