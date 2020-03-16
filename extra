@@ -1,0 +1,33 @@
+#NANO 1:
+
+
+tls-auth ta.key 0
+key-direction 0
+cipher AES-256-CBC
+auth SHA256
+comp-lzo
+user nobody
+group nogroup
+cert server.crt
+key server.key
+
+
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 208.67.222.222"
+push "dhcp-option DNS 208.67.220.220"
+
+
+
+
+
+#NANO 2
+
+
+export KEY_COUNTRY="ES"
+export KEY_PROVINCE="GU"
+export KEY_CITY="Guadalajara"
+export KEY_ORG="lagranm"
+export KEY_EMAIL="mdemouch@gmail.com"
+export KEY_OU="Desarrollo"
+
+
