@@ -57,13 +57,6 @@ cd /etc/openvpn/openvpn-ca/keys
 sudo cp ca.crt ta.key server.crt server.key /etc/openvpn
 
 
-sudo systemctl start openvpn@server
-
-
-#sudo systemctl status openvpn@server #Para ver el estado
-#ifconfig tun0 #Para ver la nueva interfaz de red en 
-
-
 mkdir /etc/openvpn/clients
 
 cd $ruta
