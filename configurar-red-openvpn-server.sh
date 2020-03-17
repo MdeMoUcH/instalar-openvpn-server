@@ -14,7 +14,7 @@ echo ""
 echo "Descomenta la siguiente linea: "
 echo "net.ipv4.ip_forward=1"
 echo ""
-read -p "Pulsa una tecla para continuar"
+read -p "Pulsa intro para continuar"
 
 sudo nano /etc/sysctl.conf
 
@@ -30,11 +30,11 @@ echo "# NAT table rules"
 echo "*nat"
 echo ":POSTROUTING ACCEPT [0:0] "
 echo "# Allow traffic from OpenVPN client to eth0 (change to the interface you discovered!)"
-echo "-A POSTROUTING -s 10.8.0.0/8 -o eth0 -j MASQUERADE"
+echo "-A POSTROUTING -s 10.0.0.0/8 -o eth0 -j MASQUERADE"
 echo "COMMIT"
 echo "# END OPENVPN RULES"
 echo ""
-read -p "Pulsa una tecla para continuar"
+read -p "Pulsa intro para continuar"
 
 sudo nano /etc/ufw/before.rules
 
@@ -44,9 +44,9 @@ echo ""
 echo "Cambia el DEFAULT_FORWARD_POLICY de DROP a ACCEPT: "
 echo "DEFAULT_FORWARD_POLICY=\"ACCEPT\" "
 echo ""
-read -p "Pulsa una tecla para continuar"
+read -p "Pulsa intro para continuar"
 
-sudo nano /etc/sysctl.conf
+sudo nano /etc/default/ufw
 
 
 sudo ufw allow 1194/udp

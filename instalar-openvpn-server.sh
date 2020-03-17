@@ -31,7 +31,7 @@ sudo sysctl -p
 
 
 sudo modprobe iptable_nat
-sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 
 
 make-cadir /etc/openvpn/openvpn-ca/

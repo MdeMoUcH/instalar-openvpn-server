@@ -3,7 +3,7 @@
 # Generate OpenVPN clients configuration files.
  
 CLIENT_NAME=$1
-OPENVPN_SERVER="0.0.0.0"
+OPENVPN_SERVER="192.168.1.144"
 CA_DIR=/etc/openvpn/openvpn-ca
 CLIENT_DIR=/etc/openvpn/clients
  
