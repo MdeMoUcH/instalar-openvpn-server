@@ -67,7 +67,7 @@ cd /etc/openvpn/clients
 
 chmod +x ./make-vpn-client.sh
 
-./make-vpn-client.sh vpnclient1
+#./make-vpn-client.sh vpnclient1
 
 
 
