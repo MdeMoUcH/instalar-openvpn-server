@@ -18,7 +18,7 @@ dpkg -s openssl
 
 
 ruta=`pwd`
-ruta=$ruta'/extra'
+ruta=$ruta'/lib'
 
 gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
 
@@ -36,7 +36,7 @@ sudo iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 
 
 make-cadir /etc/openvpn/openvpn-ca/
-#chmod 755
+
 cd /etc/openvpn/openvpn-ca/
 
 cp  $ruta'/openssl.cnf' .
@@ -70,20 +70,22 @@ chmod +x ./make-vpn-client.sh
 
 echo ""
 echo "Ya se ha instalado el servidor OPENVPN"
-echo""
 
-read -p "Quieres crear un cliente de prueba? [y/N]: " respuesta
+echo""
+read -p "¿Quieres crear un cliente de prueba? [y/N]: " respuesta
 if [ "$respuesta" = "y" ]; then
   ./make-vpn-client.sh test
 fi
 
-read -p "Quieres configurar la red? [y/N]: " respuesta
+echo ""
+read -p "¿Quieres configurar la red? [y/N]: " respuesta
 if [ "$respuesta" = "y" ]; then
 	cd $ruta
 	./configurar-red-openvpn-server.sh
 fi
 
-read -p "Quieres iniciar la VPN? [y/N]: " respuesta
+echo ""
+read -p "¿Quieres iniciar la VPN? [y/N]: " respuesta
 if [ "$respuesta" = "y" ]; then
 	cd $ruta
 	./openvpn-server-restart-status.sh
