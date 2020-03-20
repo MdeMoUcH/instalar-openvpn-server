@@ -42,6 +42,7 @@ auth SHA256
 key-direction 1
 remote-cert-tls server
 comp-lzo
+tls-client
 verb 3" > ${CLIENT_DIR}/${CLIENT_NAME}.ovpn
  
 cat <(echo -e '<ca>') \
