@@ -32,7 +32,7 @@ echo "client
 dev tun
 proto udp
 remote ${OPENVPN_SERVER} 1194
-auth-user-pass ${OPENVPN_SERVER}.txt
+auth-user-pass ${CLIENT_DIR}/${CLIENT_NAME}.txt
 user nobody
 group nogroup
 persist-key
