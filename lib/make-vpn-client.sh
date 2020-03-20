@@ -11,6 +11,18 @@ CLIENT_NAME=$1
 OPENVPN_SERVER="192.168.1.100"
 CA_DIR=/etc/openvpn/openvpn-ca
 CLIENT_DIR=/etc/openvpn/clients
+
+echo ${CLIENT_NAME} > ${CLIENT_DIR}/${CLIENT_NAME}.txt
+read -p "Escribe una contraseña para ${CLIENT_NAME}: " userpassuno
+read -p "- Repite la contraseña para ${CLIENT_NAME}: " userpassdos
+if [ "$userpassuno" = "$userpassdos" ]; then
+	echo ${CLIENT_NAME} > ${CLIENT_DIR}/${CLIENT_NAME}.txt
+	echo $userpassuno >> ${CLIENT_DIR}/${CLIENT_NAME}.txt
+else
+	echo "ERROR: No son iguales.."
+	exit
+fi
+
  
 cd ${CA_DIR}
 source vars
@@ -20,6 +32,7 @@ echo "client
 dev tun
 proto udp
 remote ${OPENVPN_SERVER} 1194
+auth-user-pass ${OPENVPN_SERVER}.txt
 user nobody
 group nogroup
 persist-key
