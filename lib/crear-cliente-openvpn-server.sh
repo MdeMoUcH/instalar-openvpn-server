@@ -5,7 +5,7 @@
 #https://tecadmin.net/install-openvpn-server-ubuntu/
 
 if [ "$EUID" -ne 0 ]
-	then echo "Please run as root"
+	then echo "Tienes que ser superusuario..."
 	exit
 fi
 

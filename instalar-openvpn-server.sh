@@ -5,7 +5,7 @@
 #https://tecadmin.net/install-openvpn-server-ubuntu/
 
 if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
+  then echo "Tienes que ser superusuario..."
   exit
 fi
 
@@ -18,6 +18,7 @@ dpkg -s openssl
 
 
 ruta=`pwd`
+ruta=$ruta'/extra'
 
 gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
 
@@ -67,7 +68,28 @@ cd /etc/openvpn/clients
 
 chmod +x ./make-vpn-client.sh
 
-#./make-vpn-client.sh vpnclient1
+echo ""
+echo "Ya se ha instalado el servidor OPENVPN"
+echo""
+
+read -p "Quieres crear un cliente de prueba? [y/N]: " respuesta
+if [ "$respuesta" = "y" ]; then
+  ./make-vpn-client.sh test
+fi
+
+read -p "Quieres configurar la red? [y/N]: " respuesta
+if [ "$respuesta" = "y" ]; then
+	cd $ruta
+	./configurar-red-openvpn-server.sh
+fi
+
+read -p "Quieres iniciar la VPN? [y/N]: " respuesta
+if [ "$respuesta" = "y" ]; then
+	cd $ruta
+	./openvpn-server-restart-status.sh
+fi
+
+
 
 
 

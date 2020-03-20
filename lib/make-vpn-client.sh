@@ -1,9 +1,14 @@
 #!/bin/bash
  
 # Generate OpenVPN clients configuration files.
+
+if [ "$EUID" -ne 0 ]
+	then echo "Tienes que ser superusuario..."
+	exit
+fi
  
 CLIENT_NAME=$1
-OPENVPN_SERVER="192.168.1.144"
+OPENVPN_SERVER="192.168.1.100"
 CA_DIR=/etc/openvpn/openvpn-ca
 CLIENT_DIR=/etc/openvpn/clients
  

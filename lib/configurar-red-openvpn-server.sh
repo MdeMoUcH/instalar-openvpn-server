@@ -6,7 +6,7 @@
 #Step 6
 
 if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
+  then echo "Tienes que ser superusuario..."
   exit
 fi
 
