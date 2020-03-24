@@ -9,6 +9,7 @@ fi
  
 CLIENT_NAME=$1
 OPENVPN_SERVER="192.168.1.100"
+OPENVPN_PORT="1194"
 CA_DIR=/etc/openvpn/openvpn-ca
 CLIENT_DIR=/etc/openvpn/clients
 
@@ -31,13 +32,13 @@ source vars
 echo "client
 dev tun
 proto udp
-remote ${OPENVPN_SERVER} 1194
+remote ${OPENVPN_SERVER} ${OPENVPN_PORT}
 auth-user-pass ${CLIENT_DIR}/${CLIENT_NAME}.txt
 user nobody
 group nogroup
 persist-key
 persist-tun
-cipher AES-128-CBC
+cipher AES-256-CBC
 auth SHA256
 key-direction 1
 remote-cert-tls server
